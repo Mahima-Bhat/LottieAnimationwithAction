@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:viewModels="clr-namespace:LottieAnimationEx.ViewModels;assembly=LottieAnimationEx"
+             xmlns:action="clr-namespace:LottieAnimationEx.Action;assembly=LottieAnimationEx"
+             x:Class="LottieAnimationEx.Views.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:MainPageViewModel></viewModels:MainPageViewModel></ContentPage.BindingContext>
+    <!--<ContentPage.Content>-->
+
+    
+    <StackLayout VerticalOptions="Center">
+        
+        
+        <Button
+                x:Name="SecondButton"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                BackgroundColor="Red"
+                WidthRequest="100"
+                HeightRequest="100"
+                Command = "{Binding ButtonClickCommand}"
+                IsVisible="{Binding IsButtonVisible}"
+            />
+
+            <forms:AnimationView 
+                x:Name="animationView" 
+                Animation="listening.json" 
+                HeightRequest="200" 
+                WidthRequest="200"
+                IsVisible="{Binding IsAnimationVisible}"
+                Loop="True"
+                PlaybackFinishedCommand="{Binding AnimationDoneCommand}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand">
+                <forms:AnimationView.Triggers>
+                    <MultiTrigger TargetType="forms:AnimationView">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding IsButtonClicked}" Value="True" />
+                        </MultiTrigger.Conditions>
+                        <MultiTrigger.EnterActions>
+                            <action:StartLottieAnimationTriggerAction />
+                        </MultiTrigger.EnterActions>
+                        <MultiTrigger.ExitActions>
+                            <action:StopLottieAnimationTriggerAction />
+                        </MultiTrigger.ExitActions>
+                    </MultiTrigger>
+                </forms:AnimationView.Triggers>
+            </forms:AnimationView>
+            
+
+
+        </StackLayout>
+    <!--</ContentPage.Content>-->
+
+
+</ContentPage>
