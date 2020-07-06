@@ -17,24 +17,47 @@
     <StackLayout VerticalOptions="Center">
         
         
-        <Button
+        <ImageButton
                 x:Name="SecondButton"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"
-                BackgroundColor="Red"
-                WidthRequest="100"
-                HeightRequest="100"
+                WidthRequest="80"
+                HeightRequest="80"
+                BackgroundColor="Transparent"
                 Command = "{Binding ButtonClickCommand}"
-                IsVisible="{Binding IsButtonVisible}"
-            />
+                Source="Image/Micicon.png">
+               <ImageButton.Triggers>
+                   <MultiTrigger TargetType="ImageButton">
+                       <MultiTrigger.Conditions>
+                           <BindingCondition Binding="{Binding IsButtonVisible}" Value="True" />
+                       </MultiTrigger.Conditions>
+                       <MultiTrigger.EnterActions>
+                           <action:StopButtonVisibility />
+                       </MultiTrigger.EnterActions>
+                       <MultiTrigger.ExitActions>
+                           <action:StartButtonVisibility />
+                       </MultiTrigger.ExitActions>
+                   </MultiTrigger>
+               </ImageButton.Triggers>
 
-            <forms:AnimationView 
+        </ImageButton>
+
+        <!--<Image Source="mic.png">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding TapCommand}"
+                    CommandParameter="microphoneRed.png"
+                     />
+            </Image.GestureRecognizers>
+        </Image>-->
+
+        <forms:AnimationView 
                 x:Name="animationView" 
                 Animation="listening.json" 
-                HeightRequest="200" 
-                WidthRequest="200"
+                HeightRequest="280" 
+                WidthRequest="280"
                 IsVisible="{Binding IsAnimationVisible}"
-                Loop="True"
+                Loop ="True"
                 PlaybackFinishedCommand="{Binding AnimationDoneCommand}"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand">

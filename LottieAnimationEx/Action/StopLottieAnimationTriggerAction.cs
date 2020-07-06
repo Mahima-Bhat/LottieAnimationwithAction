@@ -11,7 +11,7 @@ namespace LottieAnimationEx.Action
         protected override void Invoke(AnimationView sender)
         {
             sender.Progress = 0;
-            sender.Pause();
+            
         }
     }
 }

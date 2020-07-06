@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Lottie.Forms;
 using LottieAnimationEx;
@@ -19,7 +20,16 @@ namespace LottieAnimationEx.ViewModels
 
         private bool _isAnimationInProgress;
 
-        private bool _isButtonVisible = true;
+        
+
+        private bool _isButtonVisible ;
+
+        private bool _isButtonClicked;
+
+
+        //int taps = 0;
+        //ICommand tapCommand;
+        //private bool _isButtonClickedOnce = true ;
 
 
 
@@ -85,12 +95,12 @@ namespace LottieAnimationEx.ViewModels
 
 
 
-        private bool _isButtonClicked;
 
 
         public MainPageViewModel()
         {
             ButtonClickCommand = new Command(ChangeAnimation);
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -98,23 +108,30 @@ namespace LottieAnimationEx.ViewModels
         
         private void ChangeAnimation()
         {
-           
 
             if (!_isAnimationInProgress)
             {
                 _isAnimationInProgress = true;
-                IsButtonVisible = false;
                 IsButtonClicked = !IsButtonClicked;
                 IsAnimationVisible = !IsAnimationVisible;
-                Thread.Sleep(5000);
-                //IsButtonClicked = !IsButtonClicked;
-                //IsAnimationVisible = IsAnimationVisible;
+                Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+                {
+
+                    IsButtonVisible = !IsButtonVisible; 
+                    IsAnimationVisible = !IsAnimationVisible;
+                   
+
+                    return false;
+                });
+
                 _isAnimationInProgress = false;
-                
+
+
 
             }
 
-            IsButtonVisible = true;
+            IsButtonVisible = !IsButtonVisible;
+
 
         }
 
