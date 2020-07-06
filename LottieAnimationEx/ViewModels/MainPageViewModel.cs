@@ -27,9 +27,6 @@ namespace LottieAnimationEx.ViewModels
         private bool _isButtonClicked;
 
 
-        //int taps = 0;
-        //ICommand tapCommand;
-        //private bool _isButtonClickedOnce = true ;
 
 
 

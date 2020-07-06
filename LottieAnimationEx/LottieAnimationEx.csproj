@@ -11,15 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Image\mic.png" />
     <None Remove="Image\Micicon.png" />
-    <None Remove="Image\microphoneRed.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Image\mic.png" />
     <EmbeddedResource Include="Image\Micicon.png" />
-    <EmbeddedResource Include="Image\microphoneRed.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -92,9 +92,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\microphoneRed.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\LottieAnimationEx\LottieAnimationEx.csproj">
       <Project>{2D03D3F8-CABD-4D3D-B48B-5B8696898E29}</Project>
       <Name>LottieAnimationEx</Name>
@@ -102,9 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\wearmask.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\mic.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Micicon.png" />
